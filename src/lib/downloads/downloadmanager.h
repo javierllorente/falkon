@@ -36,6 +36,7 @@ class QWebEngineDownloadItem;
 class QWinTaskbarButton;
 
 class DownloadItem;
+class DownloadManagerModel;
 class WebPage;
 
 class FALKON_EXPORT DownloadManager : public QWidget
@@ -82,7 +83,6 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void clearList();
-    void deleteItem(DownloadItem* item);
     void downloadFinished(bool success);
 
 Q_SIGNALS:
@@ -99,6 +99,7 @@ private:
     QWinTaskbarButton *taskbarButton();
 
     Ui::DownloadManager* ui;
+    DownloadManagerModel *m_model;
     QBasicTimer m_timer;
 
     QString m_lastDownloadPath;
