@@ -22,6 +22,7 @@
 #include "downloadoptionsdialog.h"
 #include "downloaditem.h"
 #include "downloadmanagermodel.h"
+#include "downloadkjob.h"
 #include "networkmanager.h"
 #include "desktopnotificationsfactory.h"
 #include "qztools.h"
@@ -75,6 +76,8 @@ DownloadManager::DownloadManager(QWidget* parent)
     loadSettings();
 
     QzTools::setWmClass("Download Manager", this);
+
+    connect(m_model, &DownloadManagerModel::downloadAdded, this, &DownloadManager::downloadAdded);
 }
 
 void DownloadManager::loadSettings()
@@ -403,7 +406,8 @@ void DownloadManager::download(QWebEngineDownloadItem *downloadItem)
     downItem->setDownTimer(downloadTimer);
     downItem->startDownloading();
     connect(downItem, &DownloadItem::deleteItem, m_model, &DownloadManagerModel::removeDownload);
-    connect(downItem, &DownloadItem::downloadFinished, this, &DownloadManager::downloadFinished);
+    connect(downItem, &DownloadItem::downloadFinished, this, QOverload<bool>::of(&DownloadManager::downloadFinished));
+    connect(downItem, &DownloadItem::downloadFinished, this, QOverload<>::of(&DownloadManager::downloadFinished));
     m_model->addDownload(downItem);
     ui->list->setItemWidget(listItem, downItem);
     listItem->setSizeHint(downItem->sizeHint());

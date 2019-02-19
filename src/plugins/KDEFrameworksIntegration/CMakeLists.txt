@@ -21,4 +21,5 @@ target_link_libraries(KDEFrameworksIntegration
     KF5::Crash
     KF5::CoreAddons
     KF5::PurposeWidgets
+    KF5::JobWidgets
 )

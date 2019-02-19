@@ -23,6 +23,7 @@
 
 class KWalletPasswordBackend;
 class KIOSchemeHandler;
+class KUiServerJobTracker;
 
 class KDEFrameworksIntegrationPlugin : public QObject, public PluginInterface
 {
@@ -43,4 +44,5 @@ private:
     KWalletPasswordBackend* m_backend;
     QVector<KIOSchemeHandler*> m_kioSchemeHandlers;
     Purpose::Menu *m_sharePageMenu;
+    KUiServerJobTracker *m_jobTracker;
 };

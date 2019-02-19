@@ -37,6 +37,7 @@ class QWinTaskbarButton;
 
 class DownloadItem;
 class DownloadManagerModel;
+class DownloadKJob;
 class WebPage;
 
 class FALKON_EXPORT DownloadManager : public QWidget
@@ -88,6 +89,9 @@ private Q_SLOTS:
 Q_SIGNALS:
     void resized(QSize);
     void downloadsCountChanged();
+    void downloadAdded(DownloadItem *item);
+    void downloadRemoved(DownloadItem *item);
+    void downloadFinished();
 
 private:
     void timerEvent(QTimerEvent* e) override;

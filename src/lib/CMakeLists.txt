@@ -101,6 +101,7 @@ set(SRCS ${SRCS}
     cookies/cookiejar.cpp
     cookies/cookiemanager.cpp
     downloads/downloaditem.cpp
+    downloads/downloadkjob.cpp
     downloads/downloadmanager.cpp
     downloads/downloadmanagermodel.cpp
     downloads/downloadoptionsdialog.cpp
@@ -348,6 +349,8 @@ target_link_libraries(FalkonPrivate
     Qt5::QuickWidgets
     Qt5::WebChannel
     ${OPENSSL_CRYPTO_LIBRARY}
+    KF5::CoreAddons
+    KF5::JobWidgets
 )
 
 if (UNIX AND NOT APPLE)
