@@ -18,10 +18,10 @@
 #include "downloadkjob.h"
 
 DownloadKJob::DownloadKJob(const QUrl &url, const QString &path, const QString &fileName, QObject *parent)
-            : KJob(parent),
-            m_url(url), 
-            m_path(path),
-            m_fileName(fileName)
+    : KJob(parent),
+      m_url(url),
+      m_path(path),
+      m_fileName(fileName)
 {
 }
 
